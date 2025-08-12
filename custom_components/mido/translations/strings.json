@@ -1,0 +1,19 @@
+{
+    "config": {
+      "step": {
+        "user": {
+          "title": "Configure Cover Counter",
+          "description": "Configure interval for updating the cover count.",
+          "data": {
+            "update_interval": "Update interval (seconds)"
+          }
+        }
+      }
+    },
+    "sensor": {
+      "cover_count": {
+        "name": "Cover Entities Count"
+      }
+    }
+  }
+  

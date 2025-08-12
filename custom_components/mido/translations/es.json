@@ -1,0 +1,21 @@
+{
+    "config": {
+      "step": {
+        "user": {
+          "title": "Configurar Contador de Rollers",
+          "description": "Configura el intervalo para actualizar el conteo de rollers.",
+          "data": {
+            "update_interval": "Intervalo de actualización (segundos)"
+          }
+        }
+      }
+    },
+    "entity": {
+      "sensor": {
+        "cover_count": {
+          "name": "Cantidad de Rollers"
+        }
+      }
+    }
+  }
+  

@@ -1,0 +1,11 @@
+{
+    "domain": "mido",
+    "name": "MiDo",
+    "version": "1.0.0",
+    "documentation": "https://github.com/usuario/mido_cover_counter",
+    "requirements": [],
+    "dependencies": [],
+    "config_flow": true,
+    "iot_class": "local_polling"
+  }
+  
