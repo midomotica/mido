@@ -9,6 +9,10 @@ from homeassistant.const import Platform
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 from homeassistant.helpers import entity_registry as er
 
+#20250812
+from homeassistant.helpers.tag import async_create as async_create_tag  
+
+
 from .const import DOMAIN, DEFAULT_INTERVAL
 
 _LOGGER = logging.getLogger(__name__)
@@ -16,6 +20,9 @@ _LOGGER = logging.getLogger(__name__)
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Configura la integración tras completar el config_flow."""
     interval = entry.data.get("update_interval", DEFAULT_INTERVAL)
+
+# 20250812 Crear la etiqueta "mido_excluido"
+    await async_create_tag(hass, "mido_excluido", "Etiqueta creada por la integración MiDo")
 
     async def async_fetch_data():
         """Cuenta todos los covers en HA, excluyendo los etiquetados 'excluido'."""

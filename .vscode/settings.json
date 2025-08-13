@@ -1,0 +1,63 @@
+{
+  // Activa el servidor de lenguaje de Home Assistant solo en rutas útiles
+  "home-assistant.languageServer.activateOnFiles": [
+    // Archivos "clásicos" por si tienes una carpeta de ejemplo de config
+    "**/configuration.yaml",
+    "**/secrets.yaml",
+    "**/automations.yaml",
+    "**/scripts.yaml",
+    "**/scenes.yaml",
+    "**/ui-lovelace.yaml",
+
+    // Dashboards/Lovelace en YAML
+    "**/lovelace/**/*.yaml",
+    "**/dashboard*/**/*.yaml",
+
+    // Estructuras modulares comunes
+    "**/packages/**/*.yaml",
+    "**/includes/**/*.yaml",
+    "**/customizations/**/*.yaml",
+
+    // Tu integración y material del repo
+    "**/custom_components/mido/**/*.yaml",
+    "**/blueprints/**/*.yaml",
+    "**/blueprints/mido/**/*.yaml",
+    "**/examples/**/*.yaml",
+    "**/tests/**/*.yaml"
+  ],
+
+  // Fuerza que esos YAML usen el modo "Home Assistant" (sin afectar otros proyectos)
+  "files.associations": {
+    "**/configuration.yaml": "home-assistant",
+    "**/secrets.yaml": "home-assistant",
+    "**/automations.yaml": "home-assistant",
+    "**/scripts.yaml": "home-assistant",
+    "**/scenes.yaml": "home-assistant",
+    "**/ui-lovelace.yaml": "home-assistant",
+
+    "**/lovelace/**/*.yaml": "home-assistant",
+    "**/dashboard*/**/*.yaml": "home-assistant",
+
+    "**/packages/**/*.yaml": "home-assistant",
+    "**/includes/**/*.yaml": "home-assistant",
+    "**/customizations/**/*.yaml": "home-assistant",
+
+    "**/custom_components/mido/**/*.yaml": "home-assistant",
+    "**/blueprints/**/*.yaml": "home-assistant",
+    "**/blueprints/mido/**/*.yaml": "home-assistant",
+    "**/examples/**/*.yaml": "home-assistant",
+    "**/tests/**/*.yaml": "home-assistant"
+  },
+
+  // Evita errores del validador YAML por tags usados por HA
+  "yaml.customTags": [
+    "!secret scalar",
+    "!include scalar",
+    "!include_dir_merge_list scalar",
+    "!include_dir_merge_named scalar",
+    "!include_dir_named scalar",
+    "!include_dir_list scalar",
+    "!env_var scalar"
+  ]
+}
+
