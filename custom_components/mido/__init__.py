@@ -10,10 +10,12 @@ from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, Upda
 from homeassistant.helpers import entity_registry as er
 
 #20250812
-from homeassistant.helpers.tag import async_create as async_create_tag  
-
+from homeassistant.helpers import label_registry as lr 
 
 from .const import DOMAIN, DEFAULT_INTERVAL
+
+#20250812
+LABEL_NAME = "mido_excluido" 
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -22,7 +24,16 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     interval = entry.data.get("update_interval", DEFAULT_INTERVAL)
 
 # 20250812 Crear la etiqueta "mido_excluido"
-    await async_create_tag(hass, "mido_excluido", "Etiqueta creada por la integración MiDo")
+    label_reg = lr.async_get(hass)
+    if not any(lbl.name == LABEL_NAME for lbl in label_reg.labels.values()):
+        label_reg.async_create(
+            name=LABEL_NAME,
+            icon="mdi:tag",           # opcional (MDI, p.ej. "mdi:home")
+            color="#1E88E5",          # opcional (hex RGB)
+            description="Creada por MiDo"  # opcional
+        )
+    return True
+    
 
     async def async_fetch_data():
         """Cuenta todos los covers en HA, excluyendo los etiquetados 'excluido'."""
